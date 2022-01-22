@@ -12,8 +12,7 @@ housing_df.columns = [s.strip().replace(' ', '_') for s in housing_df.columns] #
 # Practice showing the first four rows of the data
 housing_df.loc[0:3] # loc[a:b] gives rows a to b, inclusive
 housing_df.iloc[0:4] # iloc[a:b] gives rows a to b-1
-# Different ways of showing the first 10 values in column
-TOTAL_VALUE
+# Different ways of showing the first 10 values in column TOTAL_VALUE
 housing_df['TOTAL_VALUE'].iloc[0:10]
 housing_df.iloc[0:10]['TOTAL_VALUE']
 housing_df.iloc[0:10].TOTAL_VALUE # use dot notation if the column name has no spaces
@@ -27,8 +26,8 @@ housing_df.iloc[4:5, 0:10] # use a slice to return a data frame
 pd.concat([housing_df.iloc[4:6,0:2], housing_df.iloc[4:6,4:6]],
 axis=1)
 # To specify a full column, use:
-housing.iloc[:,0:1]
-housing.TOTAL_VALUE
+housing_df.iloc[:,0:1]
+housing_df.TOTAL_VALUE
 housing_df['TOTAL_VALUE'][0:10] # show the first 10 rows of the first column
 # Descriptive statistics
 print('Number of rows ', len(housing_df['TOTAL_VALUE'])) # show length of first column
