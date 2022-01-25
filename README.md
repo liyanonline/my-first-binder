@@ -9,6 +9,7 @@ RScript Ch10.R
 R -e "source('Ch10.R')"
 
 choco install vcredist140
+
 https://chocolatey.org/install
 Install Chocolatey for Individual Use:
 First, ensure that you are using an administrative shell - you can also install as a non-admin, check out Non-Administrative Installation.
