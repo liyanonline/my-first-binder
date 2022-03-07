@@ -77,11 +77,11 @@ library(e1071)
 
 owner.df <- read.csv("ownerExample.csv")
 confusionMatrix(as.factor(ifelse(owner.df$Probability>0.5, 'owner', 'nonowner')), 
-                owner.df$Class)
+                as.factor(owner.df$Class))
 confusionMatrix(as.factor(ifelse(owner.df$Probability>0.25, 'owner', 'nonowner')), 
-                owner.df$Class)
+               as.factor(owner.df$Class))
 confusionMatrix(as.factor(ifelse(owner.df$Probability>0.75, 'owner', 'nonowner')), 
-                owner.df$Class)
+                as.factor(owner.df$Class))
 
 
 
