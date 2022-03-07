@@ -127,7 +127,7 @@ xyplot(lift.example, plot = "gain")
 
 # Second option with 'gains' library:
 library(gains)
-df <- read.csv("liftExample.csv")
+df <- read.csv("liftexample.csv")
 gain <- gains(df$actual, df$prob, groups=dim(df)[1])
 plot(c(0, gain$cume.pct.of.total*sum(df$actual)) ~ c(0, gain$cume.obs), 
      xlab = "# cases", ylab = "Cumulative", type="l")
