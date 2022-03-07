@@ -88,7 +88,7 @@ confusionMatrix(as.factor(ifelse(owner.df$Probability>0.75, 'owner', 'nonowner')
 #### Figure 5.4
 
 # replace data.frame with your own
-df <- read.csv("liftExample.csv")
+df <- read.csv("liftexample.csv")
 
 
 # create empty accuracy table
