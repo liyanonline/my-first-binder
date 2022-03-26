@@ -1,4 +1,6 @@
-%matplotlib inline
+# !pip3 install pandas sklearn statsmodels dmba matplotlib
+
+# %matplotlib inline
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -17,8 +19,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 # reduce data frame to the top 1000 rows and select columns for regression analysis
-car_df = pd.read_csv('/opt/notebooks/Codes/codes/ToyotaCorolla.csv', encoding = 'unicode_escape') # by Yan
-# car_df = pd.read_csv('ToyotaCorolla.csv', encoding = 'unicode_escape') # by Yan
+# car_df = pd.read_csv('/opt/notebooks/Codes/codes/ToyotaCorolla.csv', encoding = 'unicode_escape') # by Yan
+car_df = pd.read_csv('ToyotaCorolla.csv', encoding = 'unicode_escape') # by Yan
 car_df = car_df.iloc[0:1000]
 predictors = ['Age_08_04', 'KM', 'Fuel_Type', 'HP', 'Met_Color',
 'Automatic', 'CC',
