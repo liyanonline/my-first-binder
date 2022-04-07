@@ -1,3 +1,4 @@
+
 # Clear plots
 if(!is.null(dev.list())) dev.off()
 # Clean workspace
@@ -70,6 +71,14 @@ text(midpoints, heights+0.5, labels=round(heights, 1), cex = 0.8)
 # (argument names.arg =) 
 # according to the variable of choice.  
 
+library(e1071)
+delays.df <- read.csv("FlightDelays.csv")
+# change numerical variables to categorical first
+delays.df$DAY_WEEK <- factor(delays.df$DAY_WEEK)
+delays.df$DEP_TIME <- factor(delays.df$DEP_TIME)
+# create hourly bins departure time 
+delays.df$CRS_DEP_TIME <- factor(round(delays.df$CRS_DEP_TIME/100))
+
 barplot(aggregate(delays.df$Flight.Status == "delayed", by = list(delays.df$DAY_WEEK), 
                   mean, rm.na = T)[,2], xlab = "Day of Week", ylab = "Average Delay", 
         names.arg = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
@@ -106,6 +115,9 @@ delays.df <- read.csv("FlightDelays.csv")
 delays.df$DAY_WEEK <- factor(delays.df$DAY_WEEK, levels = c(1:7), 
                              labels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
 delays.df$CRS_DEP_TIME <- factor(round(delays.df$CRS_DEP_TIME/100))
+delays.df$ORIGIN  <- factor(delays.df$ORIGIN  )
+delays.df$DEST    <- factor(delays.df$DEST    )
+delays.df$CARRIER <- factor(delays.df$CARRIER )
 
 # create reference categories
 delays.df$ORIGIN <- relevel(delays.df$ORIGIN, ref = "IAD")
@@ -170,7 +182,8 @@ confusionMatrix(as.factor(ifelse(pred > 0.5, 1, 0)), as.factor(valid.df$isDelay)
 
 
 #### Table 10.9
-
+bank.df <- read.csv("UniversalBank.csv")
+bank.df <- bank.df[ , -c(1, 5)] # Drop ID and zip code columns.
 reg <- lm(Personal.Loan ~ Income + Family + CD.Account, data = bank.df)
 summary(reg)
 
