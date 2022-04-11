@@ -1,6 +1,4 @@
-# !pip3 install pandas numpy dmba sklearn statsmodels seaborn matplotlib mord
-
-%matplotlib inline
+%matplotlib inline
 # replace with:
 # pd.read_csv('
 # pd.read_csv('
@@ -16,7 +14,8 @@ import seaborn as sns
 from dmba import classificationSummary, gainsChart, liftChart
 from dmba.metric import AIC_score
 
-bank_df = pd.read_csv('UniversalBank.csv')
+
+bank_df = pd.read_csv('/opt/notebooks/Codes/codes/UniversalBank.csv')
 bank_df.drop(columns=['ID', 'ZIP Code'], inplace=True)
 bank_df.columns = [c.replace(' ', '_') for c in
 bank_df.columns]
@@ -66,7 +65,7 @@ gainsChart(df.actual, ax=axes[0])
 liftChart(df['p(1)'], title=False, ax=axes[1])
 plt.show()
 
-data = pd.read_csv('AccidentsFull.csv')
+data = pd.read_csv('/opt/notebooks/Codes/codes/accidentsFull.csv')
 outcome = 'MAX_SEV_IR'
 predictors = ['ALCHL_I', 'WEATHER_R']
 y = data[outcome]
@@ -103,7 +102,7 @@ results = pd.DataFrame({
 })
 print(results.head())
 
-delays_df = pd.read_csv('FlightDelays.csv')
+delays_df = pd.read_csv('/opt/notebooks/Codes/codes/FlightDelays.csv')
 # Create an indicator variable
 delays_df['isDelayed'] = [1 if status == 'delayed' else 0
 for status in delays_df['Flight Status']]
@@ -132,6 +131,7 @@ createGraph('Weather', 'Weather', axis=axes[2][1])
 plt.tight_layout()
 
 agg = delays_df.groupby(['ORIGIN', 'DAY_WEEK','CARRIER']).isDelayed.mean()
+agg = delays_df.groupby(['ORIGIN', 'DAY_WEEK','CARRIER']).isDelayed.mean()
 agg = agg.reset_index()
 # Define the layout of the graph
 height_ratios = []
@@ -155,7 +155,7 @@ if i != 2:
   ax.set_ylabel('Airport ' + origin)
 plt.show()
 
-delays_df = pd.read_csv('FlightDelays.csv')
+delays_df = pd.read_csv('/opt/notebooks/Codes/codes/FlightDelays.csv')
 # Create an indicator variable
 delays_df['isDelayed'] = [1 if status == 'delayed' else 0
 for status in delays_df['Flight Status']]
@@ -201,7 +201,7 @@ gainsChart(full_result.actual, figsize=[5, 5])
 plt.show()
 
 
-delays_df = pd.read_csv('FlightDelays.csv')
+delays_df = pd.read_csv('/opt/notebooks/Codes/codes/FlightDelays.csv')
 delays_df['isDelayed'] = [1 if status == 'delayed' else 0
 for status in delays_df['Flight Status']]
 delays_df['CRS_DEP_TIME'] = [round(t / 100) for t in
