@@ -1,4 +1,6 @@
-# %matplotlib inline
+# !pip3 install pandas numpy dmba sklearn statsmodels seaborn matplotlib mord
+
+# %matplotlib inline
 # replace with:
 # pd.read_csv('
 # pd.read_csv('
@@ -64,7 +66,7 @@ gainsChart(df.actual, ax=axes[0])
 liftChart(df['p(1)'], title=False, ax=axes[1])
 plt.show()
 
-data = pd.read_csv('accidentsFull.csv')
+data = pd.read_csv('AccidentsFull.csv')
 outcome = 'MAX_SEV_IR'
 predictors = ['ALCHL_I', 'WEATHER_R']
 y = data[outcome]
