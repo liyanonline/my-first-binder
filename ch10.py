@@ -129,26 +129,21 @@ createGraph('ORIGIN', 'Origin', axis=axes[2][0])
 createGraph('Weather', 'Weather', axis=axes[2][1])
 plt.tight_layout()
 
-agg = delays_df.groupby(['ORIGIN', 'DAY_WEEK',
-'CARRIER']).isDelayed.mean()
+agg = delays_df.groupby(['ORIGIN', 'DAY_WEEK','CARRIER']).isDelayed.mean()
 agg = agg.reset_index()
 # Define the layout of the graph
 height_ratios = []
 for i, origin in enumerate(sorted(delays_df.ORIGIN.unique())):
   height_ratios.append(len(agg[agg.ORIGIN == origin].CARRIER.unique()))
-gridspec_kw = {'height_ratios': height_ratios, 'width_ratios':
-[15, 1]}
-fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(10, 6),
-gridspec_kw = gridspec_kw)
+  gridspec_kw = {'height_ratios': height_ratios, 'width_ratios':[15, 1]}
+fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(10, 6),gridspec_kw = gridspec_kw)
 axes[0, 1].axis('off')
 axes[2, 1].axis('off')
 maxIsDelay = agg.isDelayed.max()
 for i, origin in enumerate(sorted(delays_df.ORIGIN.unique())):
-  data = pd.pivot_table(agg[agg.ORIGIN == origin],
-values='isDelayed', aggfunc=np.sum,
-index=['CARRIER'], columns= ['DAY_WEEK'])
-data = data[[7, 1, 2, 3, 4, 5, 6]] # Shift last columns to first
-ax = sns.heatmap(data, ax=axes[i][0], vmin=0,
+  data = pd.pivot_table(agg[agg.ORIGIN == origin],values='isDelayed', aggfunc=np.sum,index=['CARRIER'], columns= ['DAY_WEEK'])
+  data = data[[7, 1, 2, 3, 4, 5, 6]] # Shift last columns to first
+  ax = sns.heatmap(data, ax=axes[i][0], vmin=0,
 vmax=maxIsDelay,
 cbar_ax=axes[1][1],
 cmap=sns.light_palette("navy"))
