@@ -1,6 +1,6 @@
 # !pip3 install pandas numpy dmba sklearn statsmodels seaborn matplotlib mord
 
-# %matplotlib inline
+%matplotlib inline
 # replace with:
 # pd.read_csv('
 # pd.read_csv('
